@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C9754B1236C844000058B36 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9CB2BA43236C7BE70049CC4E /* FederalTaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FederalTaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB2BA46236C7BE70049CC4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CB2BA48236C7BE70049CC4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		9CB2BA45236C7BE70049CC4E /* FederalTaxCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				9C9754B1236C844000058B36 /* MyPlayground.playground */,
 				9CB2BA46236C7BE70049CC4E /* AppDelegate.swift */,
 				9CB2BA48236C7BE70049CC4E /* SceneDelegate.swift */,
 				9CB2BA4A236C7BE70049CC4E /* ViewController.swift */,
