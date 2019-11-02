@@ -9,22 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
+    // MARK: Properties
     
     @IBOutlet weak var firstName: UITextField!
     
     @IBOutlet weak var grossAnnualIncome: UITextField!
     
     @IBOutlet weak var answerOutput: UILabel!
+    
+    @IBOutlet weak var effectiveTaxRate: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    
     // MARK:Methods
     
     func taxCalculation() {
         guard let grossAnnualIncomeAsString = grossAnnualIncome.text else
         {
-           
+            
             answerOutput.text = "Please enter a number"
             return
         }
@@ -39,8 +45,51 @@ class ViewController: UIViewController {
             return
         }
         
+        var federalTax = 0.0
+        switch grossAnnualIncomeAsDouble {
+            
+        case 210371... :
+            federalTax += (grossAnnualIncomeAsDouble - 210371) * 0.33
+            federalTax += (210371 - 147667) * 0.29
+            federalTax += (147667 - 95259) * 0.26
+            federalTax += (95259 - 47630) * 0.205
+            federalTax += 47360 * 0.15
+            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+            
+        case 147667...210371:
+            federalTax += (grossAnnualIncomeAsDouble - 147667) * 0.29
+            federalTax += (147667 - 95259) * 0.26
+            federalTax += (95259 - 47630) * 0.205
+            federalTax += 47360 * 0.15
+            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+
+        case 95259...147667:
+            federalTax += (grossAnnualIncomeAsDouble - 95259) * 0.26
+            federalTax += (95259 - 47630) * 0.205
+            federalTax += 47360 * 0.15
+            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+
+        case 47630...95259:
+            federalTax += (grossAnnualIncomeAsDouble - 47630) * 0.205
+            federalTax += 47360 * 0.15
+            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+
+        case 0...47630:
+            federalTax += grossAnnualIncomeAsDouble * 0.15
+            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+
+        default:
+            answerOutput.text = "Please type in a valid number"
+            
+            
+            
+        }
         
-        answerOutput.text = "\(yourName) your federal tax owing is "
+        func effectiveTaxRateCalculation () {
+            let effectiveTaxRateAsDouble = federalTax / grossAnnualIncomeAsDouble
+            effectiveTaxRate.text = "Effective tax rate is"
+        }
+        
         
         
         
