@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var effectiveTaxRate: UILabel!
     
+    @IBOutlet weak var amountOfTax: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,41 +57,46 @@ class ViewController: UIViewController {
             federalTax += (147667 - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
+            answerOutput.text = "\(yourName) your federal tax owing is"
             
         case 147667...210371:
             federalTax += (grossAnnualIncomeAsDouble - 147667) * 0.29
             federalTax += (147667 - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
-
+            answerOutput.text = "\(yourName) your federal tax owing is"
+            
         case 95259...147667:
             federalTax += (grossAnnualIncomeAsDouble - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
-
+            answerOutput.text = "\(yourName) your federal tax owing is"
+            
         case 47630...95259:
             federalTax += (grossAnnualIncomeAsDouble - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
-
+            answerOutput.text = "\(yourName) your federal tax owing is"
+            
         case 0...47630:
             federalTax += grossAnnualIncomeAsDouble * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is \(federalTax) "
-
+            answerOutput.text = "\(yourName) your federal tax owing is"
+            
         default:
             answerOutput.text = "Please type in a valid number"
-            
-            
-            
         }
-        
-        func effectiveTaxRateCalculation () {
+            
+            let federalTaxAsString = String(federalTax)
+            amountOfTax.text = "$\(federalTaxAsString)"
+            
+            
             let effectiveTaxRateAsDouble = federalTax / grossAnnualIncomeAsDouble
-            effectiveTaxRate.text = "Effective tax rate is"
-        }
+            let effectiveTaxRateAsInt100 = Int(effectiveTaxRateAsDouble * 100)
+            let roundedTaxRate = effectiveTaxRateAsInt100 / 100
+            
+            effectiveTaxRate.text = "Effective tax rate is \(roundedTaxRate)"
+        
+        
+        
         
         
         
@@ -106,11 +114,9 @@ class ViewController: UIViewController {
     
     
     
-    
     @IBAction func CalculateTax(_ sender: UIButton) {
         
         taxCalculation()
-        
     }
     
     
