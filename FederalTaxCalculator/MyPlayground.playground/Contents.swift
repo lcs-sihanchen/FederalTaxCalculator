@@ -42,8 +42,8 @@ print("Yes \nyou")
 let taxAmount = 93249.83
 let income = 100000.0
 let taxRateAsDouble = taxAmount/income
-let taxRateAsIntTimes100 = Int(taxRateAsDouble * 10000)
-let roundedTaxRate = Double(taxRateAsIntTimes100)/100
+let taxRateAsIntTimes100 = Int(taxRateAsDouble * 1000)
+let roundedTaxRate = Double(taxRateAsIntTimes100)/10
 
 
 //Current federal tax rates are:

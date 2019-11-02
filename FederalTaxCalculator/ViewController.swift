@@ -35,25 +35,25 @@ class ViewController: UIViewController {
         amountOfTax.text = ""
         effectiveTaxRate.text = ""
         guard let yourName = firstName.text else {
-            answerOutput.text = "Please enter your name"
+            answerOutput.text = "Please enter your name."
             return
         }
         if let yourName = firstName.text, yourName == "" {
             
-            answerOutput.text = "Please enter your name"
+            answerOutput.text = "Please enter your name."
             return
         }
         
         guard let grossAnnualIncomeAsString = grossAnnualIncome.text else
         {
             
-            answerOutput.text = "Please enter a number"
+            answerOutput.text = "Please enter a number."
             return
         }
         
         guard let grossAnnualIncomeAsDouble = Double(grossAnnualIncomeAsString) else {
             
-            answerOutput.text = "Please enter a number"
+            answerOutput.text = "Please enter a number."
             return
         }
         
@@ -76,8 +76,8 @@ class ViewController: UIViewController {
         func effectiveTaxRateOne() {
             
             let effectiveTaxRateAsDouble = federalTax / grossAnnualIncomeAsDouble
-            let effectiveTaxRateAsInt100 = Int(effectiveTaxRateAsDouble * 10000)
-            let roundedTaxRate = Double(effectiveTaxRateAsInt100)/100
+            let effectiveTaxRateAsInt100 = Int(effectiveTaxRateAsDouble * 1000)
+            let roundedTaxRate = Double(effectiveTaxRateAsInt100)/10
             
             effectiveTaxRate.text = "Effective tax rate is: \(roundedTaxRate)%"
         }
