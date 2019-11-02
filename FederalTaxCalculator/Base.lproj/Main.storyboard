@@ -84,7 +84,7 @@
                     </view>
                     <connections>
                         <outlet property="amountOfTax" destination="zHc-Hb-9UQ" id="JQv-rv-gTJ"/>
-                        <outlet property="answerOutput" destination="kwJ-HI-gK9" id="fPK-6M-6je"/>
+                        <outlet property="answerOutput" destination="kwJ-HI-gK9" id="XUP-PE-jes"/>
                         <outlet property="effectiveTaxRate" destination="lLc-ha-N7W" id="mhk-PA-bL5"/>
                         <outlet property="firstName" destination="wsG-DF-cqt" id="CsV-0X-fKd"/>
                         <outlet property="grossAnnualIncome" destination="0F1-xG-y0M" id="2bC-iF-Ghl"/>

@@ -34,8 +34,11 @@ class ViewController: UIViewController {
         answerOutput.text = ""
         amountOfTax.text = ""
         effectiveTaxRate.text = ""
-        
         guard let yourName = firstName.text else {
+            answerOutput.text = "Please enter your name"
+            return
+        }
+        if let yourName = firstName.text, yourName == "" {
             
             answerOutput.text = "Please enter your name"
             return
@@ -58,6 +61,8 @@ class ViewController: UIViewController {
         func roundTheNumberToTwoDigits (Number:Double) {
             let numberTimes100AsInt = Int(Number * 100)
             let numberAsDouble = Double(numberTimes100AsInt)/100
+            let federalTaxAsString = String(numberAsDouble)
+            amountOfTax.text = "$\(federalTaxAsString)"
         }
         
         func finalAnswerOutput() {
@@ -67,11 +72,6 @@ class ViewController: UIViewController {
         
         
         var federalTax = 0.0
-        
-        func amountOfTaxOne() {
-            let federalTaxAsString = String(federalTax)
-            amountOfTax.text = "$\(federalTaxAsString)"
-        }
         
         func effectiveTaxRateOne() {
             
@@ -91,7 +91,6 @@ class ViewController: UIViewController {
             federalTax += 47360 * 0.15
             roundTheNumberToTwoDigits(Number: federalTax)
             finalAnswerOutput()
-            amountOfTaxOne()
             effectiveTaxRateOne()
             
         case 147667...210371:
@@ -101,7 +100,6 @@ class ViewController: UIViewController {
             federalTax += 47360 * 0.15
             roundTheNumberToTwoDigits(Number: federalTax)
             finalAnswerOutput()
-            amountOfTaxOne()
             effectiveTaxRateOne()
             
             
@@ -111,7 +109,6 @@ class ViewController: UIViewController {
             federalTax += 47360 * 0.15
             roundTheNumberToTwoDigits(Number: federalTax)
             finalAnswerOutput()
-            amountOfTaxOne()
             effectiveTaxRateOne()
             
             
@@ -120,7 +117,6 @@ class ViewController: UIViewController {
             federalTax += 47360 * 0.15
             roundTheNumberToTwoDigits(Number: federalTax)
             finalAnswerOutput()
-            amountOfTaxOne()
             effectiveTaxRateOne()
             
             
@@ -128,12 +124,11 @@ class ViewController: UIViewController {
             federalTax += grossAnnualIncomeAsDouble * 0.15
             roundTheNumberToTwoDigits(Number: federalTax)
             finalAnswerOutput()
-            amountOfTaxOne()
             effectiveTaxRateOne()
             
             
         default:
-            answerOutput.text = "Please type in a valid number"
+            answerOutput.text = "Please type in a valid number."
         }
         
         
@@ -147,12 +142,6 @@ class ViewController: UIViewController {
         
         
     }
-    
-    
-    
-    
-    
-    
     
     
     
