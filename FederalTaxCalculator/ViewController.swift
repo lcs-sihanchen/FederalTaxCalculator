@@ -31,24 +31,56 @@ class ViewController: UIViewController {
     // MARK:Methods
     
     func taxCalculation() {
+        answerOutput.text = ""
+        amountOfTax.text = ""
+        effectiveTaxRate.text = ""
+        
+        guard let yourName = firstName.text else {
+            
+            answerOutput.text = "Please enter your name"
+            return
+        }
+        
         guard let grossAnnualIncomeAsString = grossAnnualIncome.text else
         {
             
             answerOutput.text = "Please enter a number"
             return
         }
-        guard let yourName = firstName.text else {
-            
-            answerOutput.text = "Please enter your name"
-            return
-        }
+        
         guard let grossAnnualIncomeAsDouble = Double(grossAnnualIncomeAsString) else {
             
             answerOutput.text = "Please enter a number"
             return
         }
         
+        
+        func roundTheNumberToTwoDigits (Number:Double) {
+            let numberTimes100AsInt = Int(Number * 100)
+            let numberAsDouble = Double(numberTimes100AsInt)/100
+        }
+        
+        func finalAnswerOutput() {
+            answerOutput.text = "\(yourName) your federal tax owing is"
+        }
+        
+        
+        
         var federalTax = 0.0
+        
+        func amountOfTaxOne() {
+            let federalTaxAsString = String(federalTax)
+            amountOfTax.text = "$\(federalTaxAsString)"
+        }
+        
+        func effectiveTaxRateOne() {
+            
+            let effectiveTaxRateAsDouble = federalTax / grossAnnualIncomeAsDouble
+            let effectiveTaxRateAsInt100 = Int(effectiveTaxRateAsDouble * 10000)
+            let roundedTaxRate = Double(effectiveTaxRateAsInt100)/100
+            
+            effectiveTaxRate.text = "Effective tax rate is: \(roundedTaxRate)%"
+        }
         switch grossAnnualIncomeAsDouble {
             
         case 210371... :
@@ -57,43 +89,56 @@ class ViewController: UIViewController {
             federalTax += (147667 - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is"
+            roundTheNumberToTwoDigits(Number: federalTax)
+            finalAnswerOutput()
+            amountOfTaxOne()
+            effectiveTaxRateOne()
             
         case 147667...210371:
             federalTax += (grossAnnualIncomeAsDouble - 147667) * 0.29
             federalTax += (147667 - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is"
+            roundTheNumberToTwoDigits(Number: federalTax)
+            finalAnswerOutput()
+            amountOfTaxOne()
+            effectiveTaxRateOne()
+            
             
         case 95259...147667:
             federalTax += (grossAnnualIncomeAsDouble - 95259) * 0.26
             federalTax += (95259 - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is"
+            roundTheNumberToTwoDigits(Number: federalTax)
+            finalAnswerOutput()
+            amountOfTaxOne()
+            effectiveTaxRateOne()
+            
             
         case 47630...95259:
             federalTax += (grossAnnualIncomeAsDouble - 47630) * 0.205
             federalTax += 47360 * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is"
+            roundTheNumberToTwoDigits(Number: federalTax)
+            finalAnswerOutput()
+            amountOfTaxOne()
+            effectiveTaxRateOne()
+            
             
         case 0...47630:
             federalTax += grossAnnualIncomeAsDouble * 0.15
-            answerOutput.text = "\(yourName) your federal tax owing is"
+            roundTheNumberToTwoDigits(Number: federalTax)
+            finalAnswerOutput()
+            amountOfTaxOne()
+            effectiveTaxRateOne()
+            
             
         default:
             answerOutput.text = "Please type in a valid number"
         }
-            
-            let federalTaxAsString = String(federalTax)
-            amountOfTax.text = "$\(federalTaxAsString)"
-            
-            
-            let effectiveTaxRateAsDouble = federalTax / grossAnnualIncomeAsDouble
-            let effectiveTaxRateAsInt100 = Int(effectiveTaxRateAsDouble * 100)
-            let roundedTaxRate = effectiveTaxRateAsInt100 / 100
-            
-            effectiveTaxRate.text = "Effective tax rate is \(roundedTaxRate)"
+        
+        
+        
+        
         
         
         
