@@ -31,9 +31,12 @@ class ViewController: UIViewController {
     // MARK:Methods
     
     func taxCalculation() {
+        // Reset the value
         answerOutput.text = ""
         amountOfTax.text = ""
         effectiveTaxRate.text = ""
+        
+        // Using guard statements to avoid invalid input
         guard let yourName = firstName.text else {
             answerOutput.text = "Please enter your name."
             return
@@ -57,7 +60,7 @@ class ViewController: UIViewController {
             return
         }
         
-        
+        // Functions (rounding numbers, answer output)
         func roundTheNumberToTwoDigits (Number:Double) {
             let numberTimes100AsInt = Int(Number * 100)
             let numberAsDouble = Double(numberTimes100AsInt)/100
@@ -69,8 +72,6 @@ class ViewController: UIViewController {
             answerOutput.text = "\(yourName) your federal tax owing is"
         }
         
-        
-        
         var federalTax = 0.0
         
         func effectiveTaxRateOne() {
@@ -81,6 +82,8 @@ class ViewController: UIViewController {
             
             effectiveTaxRate.text = "Effective tax rate is: \(roundedTaxRate)%"
         }
+        
+        // Calculate tax for different range
         switch grossAnnualIncomeAsDouble {
             
         case 210371... :
@@ -146,7 +149,7 @@ class ViewController: UIViewController {
     
     
     
-    
+    // Action
     
     @IBAction func CalculateTax(_ sender: UIButton) {
         
@@ -160,6 +163,9 @@ class ViewController: UIViewController {
     
     
 }
+
+
+
 
 //Current federal tax rates are:
 //○ 15% on the first $47,630 of taxable income

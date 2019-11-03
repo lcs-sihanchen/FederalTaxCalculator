@@ -2,6 +2,7 @@ import UIKit
 
 var str = "Hello, playground"
 
+// Execute code under different conditions
 
 let grossAnnualIncome = 289042.0
 var federalTax = 0.0
@@ -36,11 +37,11 @@ default:
     
 }
 
-
 print("Yes \nyou")
-
+// Simulate user input
 let taxAmount = 93249.83
 let income = 100000.0
+// Calculate effective tax rate round to one decimal place
 let taxRateAsDouble = taxAmount/income
 let taxRateAsIntTimes100 = Int(taxRateAsDouble * 1000)
 let roundedTaxRate = Double(taxRateAsIntTimes100)/10
